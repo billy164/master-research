@@ -1,14 +1,16 @@
 '''
 Vertex object
 '''
+from collections import OrderedDict
+
 
 class Vertex(object):
     '''
-    :id: vertex id
+    :name: vertex name
     '''
-    def __init__(self, id):
-        self.id = id
+    def __init__(self, name):
+        self.name = name
         self.coord = []
         self.distance = {}
-        self.incremental = {}
+        self.incremental = OrderedDict()
         self.neighbours = []
