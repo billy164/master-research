@@ -19,11 +19,11 @@ class Network(object):
         :max_coord: maximum value for coordinate [0, maxcoord)
         '''
         self.numvertices = numvertices
-        self.max_coord = max_coord
         self.alpha = alpha
+        self.seed = seed
+        self.max_coord = max_coord
         self.vertices = []
         self.edges = []
-        self.seed = seed
 
         self.generateinstance()
         self.addinformation()
