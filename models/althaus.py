@@ -71,10 +71,10 @@ class Althaus(object):
         '''
         n = self.n
         consumption = {
-            vertex1: edge.weight
+            vertex1: distance
             for vertex1 in self.n.vertices
-            for vertex2, edge in vertex1.incident.iteritems()
-            if self.edgevar[edge.vertices].x > 0.5
+            for vertex2, distance in vertex1.distance.iteritems()
+            if self.arcvar[vertex1, vertex2].x > 0.5
         }
         objective = self.m.objVal
         duration = self.m.Runtime
@@ -83,8 +83,6 @@ class Althaus(object):
             algorithm_name = 'althaus' if self.params['callback'] else 'althaus_lb'
             writer(n, consumption, objective, duration, algorithm_name)
 
-        #return consumption, objective
-        consumption = {vertex.name: edgeweight for vertex, edgeweight in consumption.iteritems()}
         return consumption, objective
 
     def _variables(self):
