@@ -39,10 +39,10 @@ class Network(object):
 
     def addinformation(self):
         '''
-        information on the network such as edge weights, neighbours and incremental weights
+        information on the network such as edge weights, incident edges and incremental weights
         '''
         self._addweight()
-        self._addneighbours()
+        self._addincident()
         self._addincremental()
 
     def preprocess(self, edges):
@@ -70,7 +70,7 @@ class Network(object):
 
     def _generatepositions(self):
         '''
-        Add position information for the vertices
+        Add positional information for the vertices
         '''
         random.seed(self.seed)
         for vertex in self.vertices:
@@ -89,14 +89,16 @@ class Network(object):
             vertex2.distance[vertex1] = edge_weight
             edge.weight = edge_weight
 
-    def _addneighbours(self):
+    def _addincident(self):
         '''
-        Find all the neighbours of a vertex
+        Find all the neighbours and incident edges to a vertex
+        neighbours are given by the keys of vertex.incident.keys()
+        edges are given by vertex.incident.items()
         '''
         for edge in self.edges:
             vertex1, vertex2 = edge.vertices
-            vertex1.neighbours.append(vertex2)
-            vertex2.neighbours.append(vertex1)
+            vertex1.incident[vertex2] = edge
+            vertex2.incident[vertex1] = edge
 
     def _addincremental(self):
         '''

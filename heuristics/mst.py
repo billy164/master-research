@@ -23,7 +23,7 @@ def mst_heuristic(n, tofile=False):
         objective = 0
 
         graph = nx.Graph()
-        weighted_edges = [edge.edgetuple for edge in n.edges]
+        weighted_edges = [edge.vertexweighttuple for edge in n.edges]
         graph.add_weighted_edges_from(weighted_edges)
         tree = nx.minimum_spanning_tree(graph)
 
