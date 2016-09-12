@@ -3,8 +3,9 @@ Create a lower bound for the problem as the MST heuristic
 is a 2 approximation
 '''
 from time import time
+
 from mst import mst_heuristic
-from utils.io import writer
+from io import writer
 
 def halfmst_heuristic(n, tofile=False):
     '''

@@ -6,7 +6,7 @@ from time import time
 import networkx as nx
 
 from io import writer
-from exceptions import NotCompleteGraph
+from custom_exceptions import NotCompleteGraph
 from utils import nchoose2
 
 def mst_heuristic(n, tofile=False):
